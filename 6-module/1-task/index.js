@@ -20,7 +20,8 @@ export default class UserTable {
   render() {
 
     if (!this.elem) {
-
+      this.elem = document.createElement('TABLE');
+    }
       const items = this.data.map (item => {
         return `<tr>
                   <td>${item.name}</td>
@@ -31,7 +32,7 @@ export default class UserTable {
                 </tr>`;
       }).join('');
 
-      this.elem = document.createElement('TABLE');
+      
       this.elem.insertAdjacentHTML('beforeend',
         `<thead>
           <tr>
@@ -48,7 +49,7 @@ export default class UserTable {
       );
 
       this.elem.addEventListener('click', this.onClickItem.bind(this));
-    }
+    
   }
 
   onClickItem(event) {
