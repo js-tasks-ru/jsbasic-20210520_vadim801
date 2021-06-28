@@ -1,5 +1,3 @@
-
-
  import createElement from '../../assets/lib/create-element.js';
 
 export default class Carousel {
@@ -49,6 +47,7 @@ export default class Carousel {
   let arrowLeft = this.elem.querySelector('.carousel__arrow_left')
   let carousel = this.elem.querySelector('.carousel__inner')
   let slidesCount = carousel.querySelectorAll('.carousel__slide').length;
+  console.log(slidesCount);
   let slides = 0;
  const visibleArrow = () => {
   if ( slides === 0){
@@ -76,10 +75,9 @@ export default class Carousel {
     if (!event.target.closest('.carousel__button')) {
       return;
     }
-    console.log(event.target.closest('.carousel__slide').dataset.id);
+    //console.log(event.target.closest('.carousel__slide').dataset.id);
     let eventAddProduct = new CustomEvent('product-add', {detail: event.target.closest('.carousel__slide').dataset.id, bubbles: true});
     this.elem.dispatchEvent(eventAddProduct);
   }
-
   
 }
