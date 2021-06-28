@@ -4,7 +4,7 @@ export default class ProductCard {
   constructor(product) {
     this.data = product;
     this.render()
-    //console.log(this.data)
+    console.log(this.data)
   }
 
   render() {
