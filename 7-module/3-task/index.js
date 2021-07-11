@@ -31,7 +31,7 @@ export default class StepSlider {
       let span = document.createElement('span');
       spanContainer.append(span);
     }
-    spanContainer.firstElementChild.classList.add('slider__steps-active');
+    spanContainer.firstElementChild.classList.add('slider__step-active');
     
   }
 
@@ -59,9 +59,9 @@ export default class StepSlider {
 
       let allSteps = document.querySelector('.slider__steps');
       let spans = allSteps.children;
-      let nowStepActive = this.elem.querySelector('.slider__steps-active');
-      nowStepActive.classList.remove('slider__steps-active')
-      spans[value].classList.add('slider__steps-active')
+      let nowStepActive = this.elem.querySelector('.slider__step-active');
+      nowStepActive.classList.remove('slider__step-active')
+      spans[value].classList.add('slider__step-active')
       
       this.firstValue(value);
 
