@@ -4,7 +4,7 @@ export default class StepSlider {
     this.value = value;
     this.segments = this.steps - 1;
     this.render();
-    this.userSelect();
+    this.elem.addEventListener('click', (event) => this.definePosition(event));
     this.firstValue(this.value)
     this.customEvent();
     this.onPointerAdd ();
@@ -47,30 +47,28 @@ export default class StepSlider {
   }
   
 
-  userSelect () {
-    this.elem.addEventListener('click', (event) =>{ 
-      let left = event.clientX - this.elem.getBoundingClientRect().left;
-      let leftRelative = left / this.elem.offsetWidth;
-     // let segments = this.steps - 1;
-      let approximateValue = leftRelative * this.segments;
-      let value = Math.round(approximateValue);
+  definePosition (event) {
+    let left = event.clientX - this.elem.getBoundingClientRect().left;
+    let leftRelative = left / this.elem.offsetWidth;
+   // let segments = this.steps - 1;
+    let approximateValue = leftRelative * this.segments;
+    let value = Math.round(approximateValue);
 
-      let sliderProgress = this.elem.querySelector('.slider__value');
-      sliderProgress.innerHTML = '';
-      sliderProgress.append(value);
+    let sliderProgress = this.elem.querySelector('.slider__value');
+    sliderProgress.innerHTML = '';
+    sliderProgress.append(value);
 
-      let allSteps = document.querySelector('.slider__steps');
-      let spans = allSteps.children;
-      let nowStepActive = this.elem.querySelector('.slider__step-active');
-      nowStepActive.classList.remove('slider__step-active')
-      spans[value].classList.add('slider__step-active')
-      
-      this.firstValue(value);
+    let allSteps = document.querySelector('.slider__steps');
+    let spans = allSteps.children;
+    let nowStepActive = this.elem.querySelector('.slider__step-active');
+    nowStepActive.classList.remove('slider__step-active')
+    spans[value].classList.add('slider__step-active')
+    
+    this.firstValue(value);
 
-      
-      this.customEvent();
+    
+    this.customEvent();
 
-    })
   }
 
   onPointerAdd () {
@@ -84,6 +82,7 @@ export default class StepSlider {
 
       const onPointerUp = ev =>{
         this.elem.classList.remove('slider_dragging');
+        this.definePosition(ev);
        // this.customEvent ();
         document.removeEventListener('pointermove', this.onPointerMove)
       }
