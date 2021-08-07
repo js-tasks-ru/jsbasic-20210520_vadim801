@@ -86,28 +86,5 @@ export default class CartIcon {
 
   }
 
-/*
- updatePosition() {
-    
-    if (!this.elem.offsetHeight) return;
 
-    let initialTopCoord = this.elem.getBoundingClientRect().top + window.pageYOffset;
-
-  
-   
-    if (document.documentElement.clientWidth <= 767) {
-      this.resetPosition();
-    } else{
-      if (window.pageYOffset > initialTopCoord) {
-        // плавающая корзина
-        this.fixPosition();
-  
-      } else {
-        // корзина сверху
-       this.resetPosition();
-      }
-    }
-
-
-  }*/
 }
